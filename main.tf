@@ -5,13 +5,13 @@ provider "google" {
 
 # Call a VPC Module ,written be before
 module "vpc" {
-    source = "../modules/vpc"
+    source = "git::https://github.com/devopswithcloud/i27-terraform-b25-modules.git//vpc?ref=v1.0.0"
     vpc_name = var.local_vpc_name
 }
 
 # Calling Subnet Module
 module "subnet" {
-    source = "../modules/subnet"
+    source = "git::https://github.com/devopswithcloud/i27-terraform-b25-modules.git//subnet?ref=v1.0.0"
     subnet_name =  var.local_subnet_name
     region = var.region
     subnet_cidr = var.local_subnet_cidr
@@ -21,7 +21,7 @@ module "subnet" {
 
 # Calling GCE Module
 module "gce" {
-    source = "../modules/gce"
+    source = "git::https://github.com/devopswithcloud/i27-terraform-b25-modules.git//gce?ref=v1.0.0"
     vm_name = var.local_vm_name
     machine_type = var.local_machine_type
     zone = var.local_zone
